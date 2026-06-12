@@ -16,7 +16,7 @@ REPO_ROOT = Path(__file__).resolve().parent.parent
 ASSETS = REPO_ROOT / "assets"
 MEDIA_BASE = "https://media.githubusercontent.com/media/zackees/ai-image-video-models/main"
 
-VERSION_RE = re.compile(r"-v(?P<version>[0-9][0-9A-Za-z.]*)\.")
+VERSION_RE = re.compile(r"-v(?P<version>[0-9]+(?:\.[0-9]+)*)")
 
 
 def sha256_of(path: Path) -> str:

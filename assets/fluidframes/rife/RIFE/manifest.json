@@ -1,6 +1,6 @@
 {
-  "latest": "2026.3.onnx",
-  "2026.3.onnx": {
+  "latest": "2026.3",
+  "2026.3": {
     "href": "https://media.githubusercontent.com/media/zackees/ai-image-video-models/main/assets/fluidframes/rife/RIFE/RIFE_fp32-v2026.3.onnx.zst",
     "sha256": "45dc8c0cb5ba86cf1f91e91781abcbd653cb7a5b3d7010aed3507a1b13423f11",
     "size": 21178378,

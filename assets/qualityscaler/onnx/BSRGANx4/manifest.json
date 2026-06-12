@@ -1,6 +1,6 @@
 {
-  "latest": "2026.3.onnx",
-  "2026.3.onnx": {
+  "latest": "2026.3",
+  "2026.3": {
     "href": "https://media.githubusercontent.com/media/zackees/ai-image-video-models/main/assets/qualityscaler/onnx/BSRGANx4/BSRGANx4_fp16-v2026.3.onnx.zst",
     "sha256": "aac49e74ab4d83e74bad664dac8431a059a27e5b83a52c18788b8d836e73f5e3",
     "size": 31022668,

@@ -1,6 +1,6 @@
 {
-  "latest": "2026.3.onnx",
-  "2026.3.onnx": {
+  "latest": "2026.3",
+  "2026.3": {
     "href": "https://media.githubusercontent.com/media/zackees/ai-image-video-models/main/assets/qualityscaler/onnx/RealESRGANx4/RealESRGANx4_fp16-v2026.3.onnx.zst",
     "sha256": "cb7cc75005343776cc4124266bba55b267bd67270c5c5acaee9baf3825d1aeb7",
     "size": 30910089,
