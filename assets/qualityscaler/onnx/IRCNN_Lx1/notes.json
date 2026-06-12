@@ -1,0 +1,3 @@
+{
+  "default": "IRCNN denoiser (large, x1), fp16 ONNX. Source: QualityScaler 2026.3 release."
+}

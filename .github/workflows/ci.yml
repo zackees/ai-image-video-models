@@ -1,0 +1,26 @@
+name: CI
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  manifests:
+    name: Manifest integrity
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          lfs: true  # gen_manifest.py hashes real bytes for the drift check
+      - uses: astral-sh/setup-uv@v5
+      - name: Regenerate manifests
+        run: python tools/gen_manifest.py
+      - name: Fail if manifests were stale
+        run: |
+          git diff --stat -- 'assets/**/manifest.json' 'manifest.json'
+          git diff --exit-code -- 'assets/**/manifest.json' 'manifest.json'
+      - name: Run integrity tests
+        run: uv run --no-project --with pytest pytest tests/test_manifest_integrity.py -v
