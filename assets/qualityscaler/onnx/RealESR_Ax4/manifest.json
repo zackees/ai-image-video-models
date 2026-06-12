@@ -1,0 +1,9 @@
+{
+  "latest": "2026.3.onnx",
+  "2026.3.onnx": {
+    "href": "https://media.githubusercontent.com/media/zackees/ai-image-video-models/main/assets/qualityscaler/onnx/RealESR_Ax4/RealESR_Ax4_fp16-v2026.3.onnx.zst",
+    "sha256": "c25fa1481e80c9f1284786f7c92f81e97d12949888943d83d44c9919c46d13ee",
+    "size": 1164906,
+    "compression": "zstd"
+  }
+}

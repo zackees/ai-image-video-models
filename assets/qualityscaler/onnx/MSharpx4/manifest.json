@@ -1,0 +1,9 @@
+{
+  "latest": "2026.3.onnx",
+  "2026.3.onnx": {
+    "href": "https://media.githubusercontent.com/media/zackees/ai-image-video-models/main/assets/qualityscaler/onnx/MSharpx4/MSharpx4_fp16-v2026.3.onnx.zst",
+    "sha256": "f71f524af5d44fc170ed464b52b315ea8738240959d669da0519d844cf5f9e93",
+    "size": 13726662,
+    "compression": "zstd"
+  }
+}

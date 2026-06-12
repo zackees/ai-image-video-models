@@ -1,0 +1,12 @@
+{
+  "categories": [
+    {
+      "name": "fluidframes",
+      "manifest_path": "assets/fluidframes/manifest.json"
+    },
+    {
+      "name": "qualityscaler",
+      "manifest_path": "assets/qualityscaler/manifest.json"
+    }
+  ]
+}

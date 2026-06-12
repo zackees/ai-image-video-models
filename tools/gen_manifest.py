@@ -1,0 +1,74 @@
+"""Regenerate manifest.json files for the assets/ tree.
+
+Scans assets/<category>/<kind>/<model>/<model>-v<version>.<ext>.zst files and
+writes a leaf manifest.json per model, a manifest.json per category, and a
+root manifest.json indexing all categories.
+
+Usage: python tools/gen_manifest.py
+"""
+
+import hashlib
+import json
+import re
+from pathlib import Path
+
+REPO_ROOT = Path(__file__).resolve().parent.parent
+ASSETS = REPO_ROOT / "assets"
+MEDIA_BASE = "https://media.githubusercontent.com/media/zackees/ai-image-video-models/main"
+
+VERSION_RE = re.compile(r"-v(?P<version>[0-9][0-9A-Za-z.]*)\.")
+
+
+def sha256_of(path: Path) -> str:
+    h = hashlib.sha256()
+    with path.open("rb") as f:
+        for chunk in iter(lambda: f.read(1 << 20), b""):
+            h.update(chunk)
+    return h.hexdigest()
+
+
+def write_json(path: Path, data: dict) -> None:
+    path.write_text(json.dumps(data, indent=2) + "\n", encoding="utf-8")
+    print(f"wrote {path.relative_to(REPO_ROOT)}")
+
+
+def natural_sort_key(version: str):
+    return [int(p) if p.isdigit() else p for p in re.split(r"[.]", version)]
+
+
+def main() -> None:
+    categories = {}
+    for model_dir in sorted(ASSETS.glob("*/*/*/")):
+        archives = sorted(model_dir.glob("*.zst"))
+        if not archives:
+            continue
+        versions = {}
+        for archive in archives:
+            m = VERSION_RE.search(archive.name)
+            if not m:
+                raise ValueError(f"no -v<version> in {archive.name}")
+            rel = archive.relative_to(REPO_ROOT).as_posix()
+            versions[m.group("version")] = {
+                "href": f"{MEDIA_BASE}/{rel}",
+                "sha256": sha256_of(archive),
+                "size": archive.stat().st_size,
+                "compression": "zstd",
+            }
+        latest = sorted(versions, key=natural_sort_key)[-1]
+        write_json(model_dir / "manifest.json", {"latest": latest, **versions})
+
+        category = model_dir.relative_to(ASSETS).parts[0]
+        rel_manifest = model_dir.relative_to(ASSETS / category).as_posix() + "/manifest.json"
+        categories.setdefault(category, []).append({"name": model_dir.name, "manifest_path": rel_manifest})
+
+    for category, models in sorted(categories.items()):
+        write_json(ASSETS / category / "manifest.json", {"models": models})
+
+    write_json(
+        REPO_ROOT / "manifest.json",
+        {"categories": [{"name": c, "manifest_path": f"assets/{c}/manifest.json"} for c in sorted(categories)]},
+    )
+
+
+if __name__ == "__main__":
+    main()

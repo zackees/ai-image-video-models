@@ -1,0 +1,40 @@
+{
+  "models": [
+    {
+      "name": "BSRGANx2",
+      "manifest_path": "onnx/BSRGANx2/manifest.json"
+    },
+    {
+      "name": "BSRGANx4",
+      "manifest_path": "onnx/BSRGANx4/manifest.json"
+    },
+    {
+      "name": "IRCNN_Lx1",
+      "manifest_path": "onnx/IRCNN_Lx1/manifest.json"
+    },
+    {
+      "name": "IRCNN_Mx1",
+      "manifest_path": "onnx/IRCNN_Mx1/manifest.json"
+    },
+    {
+      "name": "LVAx2",
+      "manifest_path": "onnx/LVAx2/manifest.json"
+    },
+    {
+      "name": "MSharpx4",
+      "manifest_path": "onnx/MSharpx4/manifest.json"
+    },
+    {
+      "name": "RealESR_Ax4",
+      "manifest_path": "onnx/RealESR_Ax4/manifest.json"
+    },
+    {
+      "name": "RealESR_Gx4",
+      "manifest_path": "onnx/RealESR_Gx4/manifest.json"
+    },
+    {
+      "name": "RealESRGANx4",
+      "manifest_path": "onnx/RealESRGANx4/manifest.json"
+    }
+  ]
+}

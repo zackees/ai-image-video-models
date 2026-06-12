@@ -1,0 +1,9 @@
+{
+  "latest": "2026.3.onnx",
+  "2026.3.onnx": {
+    "href": "https://media.githubusercontent.com/media/zackees/ai-image-video-models/main/assets/qualityscaler/onnx/IRCNN_Mx1/IRCNN_Mx1_fp16-v2026.3.onnx.zst",
+    "sha256": "db10821e7a640fa896f379009afbeba60d040bb04bbbb6bdedd090e42fc572e6",
+    "size": 353706,
+    "compression": "zstd"
+  }
+}

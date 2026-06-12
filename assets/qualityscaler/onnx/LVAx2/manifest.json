@@ -1,0 +1,9 @@
+{
+  "latest": "2026.3.onnx",
+  "2026.3.onnx": {
+    "href": "https://media.githubusercontent.com/media/zackees/ai-image-video-models/main/assets/qualityscaler/onnx/LVAx2/LVAx2_fp16-v2026.3.onnx.zst",
+    "sha256": "d6de89e5db38fc10656b5031a5c69056ce6b7d605d0ead76f38c872d902d9322",
+    "size": 771971,
+    "compression": "zstd"
+  }
+}

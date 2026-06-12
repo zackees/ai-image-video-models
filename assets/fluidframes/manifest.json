@@ -1,0 +1,16 @@
+{
+  "models": [
+    {
+      "name": "RIFE",
+      "manifest_path": "rife/RIFE/manifest.json"
+    },
+    {
+      "name": "RIFE_Lite",
+      "manifest_path": "rife/RIFE_Lite/manifest.json"
+    },
+    {
+      "name": "RIFE_s",
+      "manifest_path": "rife/RIFE_s/manifest.json"
+    }
+  ]
+}
