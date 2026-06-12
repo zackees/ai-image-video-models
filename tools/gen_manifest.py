@@ -42,8 +42,10 @@ def natural_sort_key(version: str):
 
 def main() -> None:
     categories = {}
-    for model_dir in sorted(ASSETS.glob("*/*/*/")):
-        archives = sorted(model_dir.glob("*.zst"))
+    # sort by posix string, not Path: Windows Path ordering is case-insensitive
+    # and would emit a different model order than Linux CI
+    for model_dir in sorted(ASSETS.glob("*/*/*/"), key=lambda p: p.as_posix()):
+        archives = sorted(model_dir.glob("*.zst"), key=lambda p: p.name)
         if not archives:
             continue
         versions = {}
