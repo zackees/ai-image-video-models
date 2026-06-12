@@ -1,0 +1,13 @@
+[project]
+name = "ai-image-video-models"
+version = "0.1.0"
+description = "Manifest tooling and validation for LFS-hosted AI model archives"
+requires-python = ">=3.11"
+
+[dependency-groups]
+dev = ["pytest>=8"]
+
+[tool.pytest.ini_options]
+markers = [
+    "network: tests that hit the live GitHub media endpoints (run with --run-network)",
+]

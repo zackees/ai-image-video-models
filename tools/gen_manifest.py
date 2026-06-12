@@ -4,6 +4,10 @@ Scans assets/<category>/<kind>/<model>/<model>-v<version>.<ext>.zst files and
 writes a leaf manifest.json per model, a manifest.json per category, and a
 root manifest.json indexing all categories.
 
+If a model dir contains notes.json ({"default": str, "<version>": str}), each
+emitted version entry gets a "notes" field (version-specific text wins over
+"default"). Consumers ignore the field; it is provenance for humans.
+
 Usage: python tools/gen_manifest.py
 """
 
@@ -38,8 +42,10 @@ def natural_sort_key(version: str):
 
 def main() -> None:
     categories = {}
-    for model_dir in sorted(ASSETS.glob("*/*/*/")):
-        archives = sorted(model_dir.glob("*.zst"))
+    # sort by posix string, not Path: Windows Path ordering is case-insensitive
+    # and would emit a different model order than Linux CI
+    for model_dir in sorted(ASSETS.glob("*/*/*/"), key=lambda p: p.as_posix()):
+        archives = sorted(model_dir.glob("*.zst"), key=lambda p: p.name)
         if not archives:
             continue
         versions = {}
@@ -54,6 +60,14 @@ def main() -> None:
                 "size": archive.stat().st_size,
                 "compression": "zstd",
             }
+        notes_path = model_dir / "notes.json"
+        if notes_path.exists():
+            notes = json.loads(notes_path.read_text(encoding="utf-8"))
+            for version, entry in versions.items():
+                note = notes.get(version, notes.get("default"))
+                if note is not None:
+                    entry["notes"] = note
+
         latest = sorted(versions, key=natural_sort_key)[-1]
         write_json(model_dir / "manifest.json", {"latest": latest, **versions})
 

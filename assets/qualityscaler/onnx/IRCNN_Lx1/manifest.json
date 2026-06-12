@@ -4,6 +4,7 @@
     "href": "https://media.githubusercontent.com/media/zackees/ai-image-video-models/main/assets/qualityscaler/onnx/IRCNN_Lx1/IRCNN_Lx1_fp16-v2026.3.onnx.zst",
     "sha256": "85d44ae794cf7b37535303ce6439c83deef7e48383fa0bda86f1f98754946121",
     "size": 353507,
-    "compression": "zstd"
+    "compression": "zstd",
+    "notes": "IRCNN denoiser (large, x1), fp16 ONNX. Source: QualityScaler 2026.3 release."
   }
 }

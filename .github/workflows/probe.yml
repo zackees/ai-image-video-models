@@ -1,0 +1,16 @@
+name: Network probe
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "17 6 * * 1"  # weekly, Monday 06:17 UTC
+
+jobs:
+  probe:
+    name: Probe media hrefs
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4  # no LFS needed; only manifests are read
+      - uses: astral-sh/setup-uv@v5
+      - name: Probe every manifest href
+        run: uv run --no-project --with pytest pytest tests/test_network_probe.py -v --run-network

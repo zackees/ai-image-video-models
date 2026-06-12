@@ -4,6 +4,7 @@
     "href": "https://media.githubusercontent.com/media/zackees/ai-image-video-models/main/assets/fluidframes/rife/RIFE_s/RIFE_s_fp32-v2026.3.onnx.zst",
     "sha256": "e99fc85331f1ea106f6bd4926a9635cd2f4e1c24114f2c5318e6db7c956a62b3",
     "size": 21065345,
-    "compression": "zstd"
+    "compression": "zstd",
+    "notes": "RIFE small frame interpolation, fp32 ONNX. Source: FluidFrames.RIFE 2026.3 release."
   }
 }

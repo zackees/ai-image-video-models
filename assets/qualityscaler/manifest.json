@@ -25,16 +25,16 @@
       "manifest_path": "onnx/MSharpx4/manifest.json"
     },
     {
+      "name": "RealESRGANx4",
+      "manifest_path": "onnx/RealESRGANx4/manifest.json"
+    },
+    {
       "name": "RealESR_Ax4",
       "manifest_path": "onnx/RealESR_Ax4/manifest.json"
     },
     {
       "name": "RealESR_Gx4",
       "manifest_path": "onnx/RealESR_Gx4/manifest.json"
-    },
-    {
-      "name": "RealESRGANx4",
-      "manifest_path": "onnx/RealESRGANx4/manifest.json"
     }
   ]
 }
